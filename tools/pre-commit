@@ -19,8 +19,10 @@ echo "[pre-commit] Checking image sizes..."
 # Re-stage anything the compression may have touched
 cd "$REPO_ROOT"
 git add images/
-if ! git diff --quiet -- language-page.html 2>/dev/null; then
-    git add language-page.html
-fi
+for src in language-page.html language-page.js; do
+    if [ -f "$src" ] && ! git diff --quiet -- "$src" 2>/dev/null; then
+        git add "$src"
+    fi
+done
 
 exit 0

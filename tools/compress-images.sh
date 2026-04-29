@@ -11,7 +11,7 @@ set -e
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 IMAGES_DIR="$REPO_ROOT/images"
-HTML_FILE="$REPO_ROOT/language-page.html"
+SOURCE_FILES=("$REPO_ROOT/language-page.html" "$REPO_ROOT/language-page.js")
 THRESHOLD_BYTES=$((500 * 1024))   # 500 KB
 MAX_WIDTH=1200
 JPEG_QUALITY=82
@@ -40,10 +40,11 @@ for file in "${images[@]}"; do
         printf "  %s (%dKB) -> %s.jpg" "$basename" "$((size/1024))" "$name"
         sips -s format jpeg -s formatOptions $JPEG_QUALITY -Z $MAX_WIDTH "$file" --out "$new_path" > /dev/null
         rm "$file"
-        # Update HTML references if the file is referenced there
-        if [ -f "$HTML_FILE" ] && grep -q "$basename" "$HTML_FILE"; then
-            sed -i '' "s|${basename}|${name}.jpg|g" "$HTML_FILE"
-        fi
+        # Update source-file references (image URLs may be in either file)
+        for src in "${SOURCE_FILES[@]}"; do
+            [ -f "$src" ] && grep -q "$basename" "$src" && \
+                sed -i '' "s|${basename}|${name}.jpg|g" "$src"
+        done
         new_size=$(wc -c < "$new_path")
         printf " (%dKB)\n" "$((new_size/1024))"
         did_anything=1
