@@ -134,11 +134,17 @@
     .language-page-wrapper .language-card {
         background: white;
         border-radius: 16px;
-        padding: 30px;
+        padding: 22px 24px 16px 24px;
         box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         transition: all 0.3s ease;
         border: 2px solid transparent;
         scroll-margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .language-page-wrapper .language-card > .section:last-of-type {
+        margin-bottom: 6px;
     }
 
     .language-page-wrapper .language-card:hover {
@@ -156,8 +162,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 20px;
-        padding-bottom: 20px;
+        margin-bottom: 14px;
+        padding-bottom: 14px;
         border-bottom: 2px solid #f0f0f0;
     }
 
@@ -170,10 +176,15 @@
         font-weight: 700;
         color: #2c3e50;
         margin-bottom: 5px;
+        white-space: nowrap;
+    }
+
+    .language-page-wrapper .language-name:has(.subtitle) {
+        font-size: 1.6rem;
     }
 
     .language-page-wrapper .language-name .subtitle {
-        font-size: 1.3rem;
+        font-size: 1rem;
         font-weight: 600;
         color: #7f8c8d;
     }
@@ -191,7 +202,7 @@
     }
 
     .language-page-wrapper .section {
-        margin-bottom: 25px;
+        margin-bottom: 16px;
     }
 
     .language-page-wrapper .section-title {
@@ -200,14 +211,14 @@
         text-transform: uppercase;
         letter-spacing: 0.5px;
         color: #95a5a6;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     .language-page-wrapper .books-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 12px;
-        margin-bottom: 20px;
+        margin-bottom: 8px;
     }
 
     .language-page-wrapper .book-item {
@@ -373,15 +384,15 @@
 
     .language-page-wrapper .certifications-section {
         background: #f8f9fa;
-        padding: 18px;
+        padding: 14px;
         border-radius: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 0;
     }
 
     .language-page-wrapper .cert-badges {
         display: flex;
         gap: 10px;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         flex-wrap: wrap;
     }
 
@@ -499,6 +510,7 @@
         border-radius: 8px;
         font-weight: 600;
         transition: all 0.3s;
+        margin-top: auto;
     }
 
     .language-page-wrapper .practitioner-link:hover {
@@ -1156,16 +1168,17 @@
                 badge + renderBookCover(type, book) + '</div>';
         }
 
-        var chartHtml = '';
-        if (lang.emotionCodeChart && lang.emotionCodeChart.available) {
-            chartHtml = '<div class="section"><div class="chart-section">' +
-                '<button class="chart-download-btn" onclick="window.open(\'' + lang.emotionCodeChart.url + '\', \'_blank\')">' +
-                '<img src="' + CHART_ICON_URL + '" alt="Emotion Code Chart" class="chart-icon" />' +
-                '<div class="chart-text">' +
-                '<div class="chart-title">The Emotion Code Chart</div>' +
-                '<div class="chart-subtitle">Download or view online</div>' +
-                '</div></button></div></div>';
-        }
+        var chartAvailable = lang.emotionCodeChart && lang.emotionCodeChart.available;
+        var chartClass = chartAvailable ? '' : 'unavailable';
+        var chartOnclick = chartAvailable ? 'onclick="window.open(\'' + lang.emotionCodeChart.url + '\', \'_blank\')"' : '';
+        var chartSubtitle = chartAvailable ? 'Download or view online' : 'Coming soon';
+        var chartHtml = '<div class="section"><div class="chart-section">' +
+            '<button class="chart-download-btn ' + chartClass + '" ' + chartOnclick + '>' +
+            '<img src="' + CHART_ICON_URL + '" alt="Emotion Code Chart" class="chart-icon" />' +
+            '<div class="chart-text">' +
+            '<div class="chart-title">The Emotion Code Chart</div>' +
+            '<div class="chart-subtitle">' + chartSubtitle + '</div>' +
+            '</div></button></div></div>';
 
         var certBadgesHtml = '';
         var certKeys2 = Object.keys(lang.certifications);
