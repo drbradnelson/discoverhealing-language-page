@@ -1,0 +1,26 @@
+#!/bin/bash
+# Pre-commit hook: auto-compress oversized images and re-stage them.
+#
+# To install (one-time, since git hooks live outside the tracked repo):
+#   cp tools/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+COMPRESS="$REPO_ROOT/tools/compress-images.sh"
+
+[ -x "$COMPRESS" ] || exit 0
+
+# Only run if there are staged image files in /images
+staged_images=$(git diff --cached --name-only --diff-filter=AM | grep -iE "^images/.*\.(png|jpg|jpeg)$" || true)
+[ -z "$staged_images" ] && exit 0
+
+echo "[pre-commit] Checking image sizes..."
+"$COMPRESS"
+
+# Re-stage anything the compression may have touched
+cd "$REPO_ROOT"
+git add images/
+if ! git diff --quiet -- language-page.html 2>/dev/null; then
+    git add language-page.html
+fi
+
+exit 0
