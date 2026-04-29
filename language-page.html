@@ -1,0 +1,1269 @@
+<style>
+    /* Reset Avada styles that might interfere */
+    .language-page-wrapper * {
+        box-sizing: border-box;
+    }
+
+    .language-page-wrapper {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+        color: #333;
+        margin: -50px -50px 0 -50px;
+        padding: 0;
+    }
+
+    .language-page-wrapper .header {
+        background: white;
+        padding: 40px 20px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        margin-bottom: 0;
+    }
+
+    .language-page-wrapper .header h1 {
+        font-size: 2.8rem;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+
+    .language-page-wrapper .header p {
+        font-size: 1.2rem;
+        color: #7f8c8d;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .language-page-wrapper .main-container {
+        display: flex;
+        max-width: 1600px;
+        margin: 0 auto;
+        min-height: calc(100vh - 200px);
+    }
+
+    .language-page-wrapper .sidebar {
+        width: 280px;
+        background: white;
+        padding: 30px 20px;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .language-page-wrapper .sidebar-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #ecf0f1;
+    }
+
+    .language-page-wrapper .language-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .language-page-wrapper .language-list-item {
+        margin-bottom: 8px;
+    }
+
+    .language-page-wrapper .language-list-item a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 15px;
+        text-decoration: none;
+        color: #555;
+        border-radius: 8px;
+        transition: all 0.2s;
+        font-weight: 500;
+    }
+
+    .language-page-wrapper .language-list-item a:hover {
+        background: #f8f9fa;
+        color: #3498db;
+        transform: translateX(5px);
+    }
+
+    .language-page-wrapper .language-list-item a.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+
+    .language-page-wrapper .language-list-item .flag {
+        font-size: 1.5rem;
+    }
+
+    .language-page-wrapper .content-area {
+        flex: 1;
+        padding: 40px;
+        overflow-y: auto;
+    }
+
+    .language-page-wrapper .search-box {
+        max-width: 500px;
+        margin: 0 0 40px 0;
+        background: white;
+        padding: 8px;
+        border-radius: 12px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    }
+
+    .language-page-wrapper .search-box input {
+        width: 100%;
+        padding: 14px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        outline: none;
+    }
+
+    .language-page-wrapper .language-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .language-page-wrapper .language-card {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        scroll-margin-top: 20px;
+    }
+
+    .language-page-wrapper .language-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        border-color: #3498db;
+    }
+
+    .language-page-wrapper .language-card.highlighted {
+        border-color: #667eea;
+        box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .language-page-wrapper .language-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .language-page-wrapper .language-info {
+        flex: 1;
+    }
+
+    .language-page-wrapper .language-name {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 5px;
+    }
+
+    .language-page-wrapper .language-name .subtitle {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #7f8c8d;
+    }
+
+    .language-page-wrapper .language-native {
+        font-size: 1.1rem;
+        color: #7f8c8d;
+        font-style: italic;
+    }
+
+    .language-page-wrapper .flag-group {
+        display: flex;
+        gap: 8px;
+        font-size: 2.5rem;
+    }
+
+    .language-page-wrapper .section {
+        margin-bottom: 25px;
+    }
+
+    .language-page-wrapper .section-title {
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #95a5a6;
+        margin-bottom: 15px;
+    }
+
+    .language-page-wrapper .books-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .language-page-wrapper .book-item {
+        position: relative;
+        cursor: pointer;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+        aspect-ratio: 2/3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #e0e0e0;
+    }
+
+    .language-page-wrapper .book-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        border-color: #3498db;
+    }
+
+    .language-page-wrapper .book-item.unavailable {
+        opacity: 0.4;
+        cursor: not-allowed;
+        filter: grayscale(100%);
+    }
+
+    .language-page-wrapper .book-item.unavailable:hover {
+        transform: none;
+        box-shadow: none;
+        border-color: #e0e0e0;
+    }
+
+    .language-page-wrapper .book-cover-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+
+    .language-page-wrapper .book-item.unavailable .book-cover-image {
+        opacity: 0.3;
+    }
+
+    .language-page-wrapper .book-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        text-align: center;
+        color: white;
+    }
+
+    .language-page-wrapper .book-item.emotion .book-placeholder {
+        background: linear-gradient(135deg, #3ba199 0%, #2d8b83 100%);
+    }
+    .language-page-wrapper .book-item.body .book-placeholder {
+        background: linear-gradient(135deg, #6b5b95 0%, #564a7a 100%);
+    }
+    .language-page-wrapper .book-item.heart .book-placeholder {
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    }
+
+    .language-page-wrapper .book-icon {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+
+    .language-page-wrapper .book-title {
+        font-size: 0.75rem;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    .language-page-wrapper .book-badge {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: rgba(46, 204, 113, 0.95);
+        color: white;
+        font-size: 0.7rem;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        z-index: 10;
+    }
+
+    .language-page-wrapper .chart-section {
+        background: white;
+        padding: 0;
+        border-radius: 0;
+        margin-bottom: 0;
+        border: none;
+    }
+
+    .language-page-wrapper .chart-download-btn {
+        width: 100%;
+        padding: 12px 16px;
+        background: white;
+        color: #2c3e50;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+    }
+
+    .language-page-wrapper .chart-download-btn:hover {
+        background: #f8f9fa;
+    }
+
+    .language-page-wrapper .chart-icon {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        flex-shrink: 0;
+        image-rendering: -webkit-optimize-contrast;
+    }
+
+    .language-page-wrapper .chart-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        flex: 1;
+    }
+
+    .language-page-wrapper .chart-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    .language-page-wrapper .chart-subtitle {
+        font-size: 0.8rem;
+        color: #7f8c8d;
+        font-weight: 400;
+    }
+
+    .language-page-wrapper .chart-download-btn.unavailable {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .language-page-wrapper .chart-download-btn.unavailable:hover {
+        background: white;
+    }
+
+    .language-page-wrapper .certifications-section {
+        background: #f8f9fa;
+        padding: 18px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .language-page-wrapper .cert-badges {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+    }
+
+    .language-page-wrapper .cert-badge {
+        position: relative;
+        flex: 1;
+        min-width: 90px;
+        padding: 10px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: white;
+        transition: all 0.2s;
+        cursor: pointer;
+    }
+
+    .language-page-wrapper .cert-badge:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .language-page-wrapper .cert-badge.unavailable {
+        background: #e0e0e0 !important;
+        color: #95a5a6;
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    .language-page-wrapper .cert-badge.unavailable:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .language-page-wrapper .cert-badge.emotion { background: #3ba199; }
+    .language-page-wrapper .cert-badge.body { background: #6b5b95; }
+    .language-page-wrapper .cert-badge.belief { background: #e74c3c; }
+
+    .language-page-wrapper .younity-badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        width: 32px;
+        height: 32px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        border: 2px solid white;
+        z-index: 10;
+        padding: 4px;
+    }
+
+    .language-page-wrapper .younity-badge img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        image-rendering: -webkit-optimize-contrast;
+    }
+
+    .language-page-wrapper .cert-icon {
+        font-size: 1.3rem;
+    }
+
+    .language-page-wrapper .cert-purchase-btn {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .language-page-wrapper .cert-purchase-btn:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .language-page-wrapper .cert-purchase-btn.disabled {
+        background: #bdc3c7;
+        cursor: not-allowed;
+    }
+
+    .language-page-wrapper .cert-purchase-btn.disabled:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .language-page-wrapper .cert-purchase-btn.younity {
+        background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+    }
+
+    .language-page-wrapper .cert-purchase-btn.younity:hover {
+        box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+    }
+
+    .language-page-wrapper .practitioner-link {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        background: white;
+        border: 2px solid #3498db;
+        color: #3498db;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+
+    .language-page-wrapper .practitioner-link:hover {
+        background: #3498db;
+        color: white;
+        transform: scale(1.02);
+    }
+
+    .language-page-wrapper .empty-state {
+        text-align: center;
+        padding: 80px 20px;
+        color: #7f8c8d;
+    }
+
+    .language-page-wrapper .empty-state h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 1024px) {
+        .language-page-wrapper .main-container {
+            flex-direction: column;
+        }
+
+        .language-page-wrapper .sidebar {
+            width: 100%;
+            position: relative;
+            height: auto;
+            max-height: 300px;
+        }
+
+        .language-page-wrapper .content-area {
+            padding: 20px;
+        }
+
+        .language-page-wrapper .language-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .language-page-wrapper .header h1 {
+            font-size: 2rem;
+        }
+
+        .language-page-wrapper .books-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .language-page-wrapper .language-name {
+            font-size: 1.6rem;
+        }
+
+        .language-page-wrapper .language-name .subtitle {
+            font-size: 1.1rem;
+        }
+
+        .language-page-wrapper .flag-group {
+            font-size: 2rem;
+        }
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
+<div class="language-page-wrapper">
+    <div class="header">
+        <h1>Books & Certifications by Language</h1>
+        <p>Discover which books are available in your language and where you can get certified</p>
+    </div>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-title">All Languages</div>
+            <ul class="language-list" id="languageList"></ul>
+        </aside>
+
+        <main class="content-area">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search languages..." />
+            </div>
+
+            <div class="language-grid" id="languageGrid"></div>
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <h3>No languages found</h3>
+                <p>Try adjusting your search</p>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+(function() {
+    'use strict';
+
+    // CONFIGURATION
+    var CERTIFICATION_URL_DISCOVER_HEALING = 'https://discoverhealing.com/certification/';
+    var CERTIFICATION_URL_YOUNITY = 'https://younity.com';
+    var YOUNITY_LOGO_URL = 'https://discoverhealing.com/wp-content/uploads/2026/02/Younity-Logo-png-b83.png';
+    var CHART_ICON_URL = 'https://discoverhealing.com/wp-content/uploads/2026/02/Screenshot-2026-02-12-at-23.48.41-png-b83.png';
+
+    // Book cover configuration
+    var BOOK_COVERS = {
+        english: { emotion: null, body: null, heart: null },
+        arabic: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Arabic-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Arabic-Body-Code-Glory-png-f93-scaled.jpg',
+            heart: null
+        },
+        croatian: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Croatian-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: null,
+            heart: null
+        },
+        czech: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Czech-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: null,
+            heart: null
+        },
+        dutch: { emotion: null, body: null, heart: null },
+        french: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/French-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: null,
+            heart: null
+        },
+        german: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/German-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/German-Body-Code-Glory-png-f93-scaled.jpg',
+            heart: 'https://s3.discoverhealing.com/wp-content/uploads/2025/11/German-Language-Belief-Code-png-f93-1024x731.jpg'
+        },
+        hungarian: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Hungarian-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Hungarian-Body-Code-Glory-png-f93-scaled.jpg',
+            heart: null
+        },
+        italian: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Italian-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: null,
+            heart: null
+        },
+        japanese: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Japanese-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: null,
+            heart: null
+        },
+        korean: { emotion: null, body: null, heart: null },
+        polish: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Polish-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Polish-Body-Code-Glory-png-f93-scaled.jpg',
+            heart: null
+        },
+        portuguese: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Portuguese-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Portuguese-Body-Code-Glory-png-f93-scaled.jpg',
+            heart: null
+        },
+        romanian: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Romanian-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Romanian-Body-Code-Glory-png-f93-scaled.jpg',
+            heart: null
+        },
+        russian: { emotion: null, body: null, heart: null },
+        slovak: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Slovak-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: null,
+            heart: null
+        },
+        spanish: {
+            emotion: null,
+            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Spanish-Body-Code-Glory-png-f93-scaled.jpg',
+            heart: null
+        },
+        swedish: {
+            emotion: null,
+            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Swedish-Body-Code-Glory-png-f93-scaled.jpg',
+            heart: null
+        },
+        turkish: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Turkish-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Turkish-body-Code-Glory-png-f93-scaled.jpg',
+            heart: null
+        },
+        vietnamese: {
+            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Vietnamese-Emotion-Code-Glory-png-f93-scaled.jpg',
+            body: null,
+            heart: null
+        },
+        'chinese-traditional': { emotion: null, body: null, heart: null },
+        'chinese-simplified': { emotion: null, body: null, heart: null }
+    };
+
+    var languages = [
+        {
+            id: "english", name: "English", displayName: "English", native: "English",
+            flags: ["🇺🇸", "🇬🇧", "🇨🇦", "🇦🇺"], primaryFlag: "🇺🇸",
+            books: {
+                emotion: { available: true, url: "https://www.amazon.com/Emotion-Code-Bradley-Nelson/dp/1250194520", coverImage: BOOK_COVERS.english.emotion },
+                body: { available: true, url: "https://www.amazon.com/Body-Code-Bradley-Nelson/dp/1250194539", coverImage: BOOK_COVERS.english.body },
+                heart: { available: true, url: "#", coverImage: BOOK_COVERS.english.heart }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/the-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: true, url: CERTIFICATION_URL_DISCOVER_HEALING, partner: "Discover Healing" },
+                body: { available: true, url: CERTIFICATION_URL_DISCOVER_HEALING, partner: "Discover Healing" },
+                belief: { available: true, url: CERTIFICATION_URL_DISCOVER_HEALING, partner: "Discover Healing" }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=english"
+        },
+        {
+            id: "arabic", name: "Arabic", displayName: "Arabic", native: "العربية",
+            flags: ["🇸🇦", "🇦🇪", "🇪🇬"], primaryFlag: "🇸🇦",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.arabic.emotion },
+                body: { available: true, url: "#", coverImage: BOOK_COVERS.arabic.body },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: false, url: null },
+            certifications: {
+                emotion: { available: false, url: null, partner: null },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=arabic"
+        },
+        {
+            id: "croatian", name: "Croatian", displayName: "Croatian", native: "Hrvatski",
+            flags: ["🇭🇷"], primaryFlag: "🇭🇷",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.croatian.emotion },
+                body: { available: false, url: null, coverImage: null },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: false, url: null },
+            certifications: {
+                emotion: { available: false, url: null, partner: null },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=croatian"
+        },
+        {
+            id: "czech", name: "Czech", displayName: "Czech", native: "Čeština",
+            flags: ["🇨🇿"], primaryFlag: "🇨🇿",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.czech.emotion },
+                body: { available: false, url: null, coverImage: null },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/czech-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: true, url: CERTIFICATION_URL_YOUNITY, partner: "Younity" },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=czech"
+        },
+        {
+            id: "dutch", name: "Dutch", displayName: "Dutch", native: "Nederlands",
+            flags: ["🇳🇱", "🇧🇪"], primaryFlag: "🇳🇱",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.dutch.emotion },
+                body: { available: false, url: null, coverImage: null },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/dutch-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: true, url: CERTIFICATION_URL_YOUNITY, partner: "Younity" },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=dutch"
+        },
+        {
+            id: "french", name: "French", displayName: "French", native: "Français",
+            flags: ["🇫🇷", "🇨🇦"], primaryFlag: "🇫🇷",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.french.emotion },
+                body: { available: true, url: "#", coverImage: BOOK_COVERS.french.body },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/french-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: false, url: null, partner: null },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=french"
+        },
+        {
+            id: "german", name: "German", displayName: "German", native: "Deutsch",
+            flags: ["🇩🇪", "🇦🇹", "🇨🇭"], primaryFlag: "🇩🇪",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.german.emotion },
+                body: { available: true, url: "#", coverImage: BOOK_COVERS.german.body },
+                heart: { available: true, url: "#", coverImage: BOOK_COVERS.german.heart }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/german-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: true, url: CERTIFICATION_URL_DISCOVER_HEALING, partner: "Discover Healing" },
+                body: { available: true, url: CERTIFICATION_URL_DISCOVER_HEALING, partner: "Discover Healing" },
+                belief: { available: true, url: CERTIFICATION_URL_DISCOVER_HEALING, partner: "Discover Healing" }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=german"
+        },
+        {
+            id: "hungarian", name: "Hungarian", displayName: "Hungarian", native: "Magyar",
+            flags: ["🇭🇺"], primaryFlag: "🇭🇺",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.hungarian.emotion },
+                body: { available: true, url: "#", coverImage: BOOK_COVERS.hungarian.body },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/hungarian-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: true, url: CERTIFICATION_URL_YOUNITY, partner: "Younity" },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=hungarian"
+        },
+        {
+            id: "italian", name: "Italian", displayName: "Italian", native: "Italiano",
+            flags: ["🇮🇹"], primaryFlag: "🇮🇹",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.italian.emotion },
+                body: { available: false, url: null, coverImage: null },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/italian-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: false, url: null, partner: null },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=italian"
+        },
+        {
+            id: "japanese", name: "Japanese", displayName: "Japanese", native: "日本語",
+            flags: ["🇯🇵"], primaryFlag: "🇯🇵",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.japanese.emotion },
+                body: { available: false, url: null, coverImage: null },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/japanese-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: true, url: CERTIFICATION_URL_DISCOVER_HEALING, partner: "Discover Healing" },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=japanese"
+        },
+        {
+            id: "korean", name: "Korean", displayName: "Korean", native: "한국어",
+            flags: ["🇰🇷"], primaryFlag: "🇰🇷",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.korean.emotion },
+                body: { available: false, url: null, coverImage: null },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/korean-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: false, url: null, partner: null },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=korean"
+        },
+        {
+            id: "polish", name: "Polish", displayName: "Polish", native: "Polski",
+            flags: ["🇵🇱"], primaryFlag: "🇵🇱",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.polish.emotion },
+                body: { available: true, url: "#", coverImage: BOOK_COVERS.polish.body },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/polish-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: true, url: CERTIFICATION_URL_DISCOVER_HEALING, partner: "Discover Healing" },
+                body: { available: true, url: CERTIFICATION_URL_DISCOVER_HEALING, partner: "Discover Healing" },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=polish"
+        },
+        {
+            id: "portuguese", name: "Portuguese", displayName: "Portuguese", native: "Português",
+            flags: ["🇧🇷", "🇵🇹"], primaryFlag: "🇧🇷",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.portuguese.emotion },
+                body: { available: true, url: "#", coverImage: BOOK_COVERS.portuguese.body },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/portuguese-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: true, url: CERTIFICATION_URL_YOUNITY, partner: "Younity" },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=portuguese"
+        },
+        {
+            id: "romanian", name: "Romanian", displayName: "Romanian", native: "Română",
+            flags: ["🇷🇴"], primaryFlag: "🇷🇴",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.romanian.emotion },
+                body: { available: true, url: "#", coverImage: BOOK_COVERS.romanian.body },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: false, url: null },
+            certifications: {
+                emotion: { available: false, url: null, partner: null },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=romanian"
+        },
+        {
+            id: "russian", name: "Russian", displayName: "Russian", native: "Русский",
+            flags: ["🇷🇺"], primaryFlag: "🇷🇺",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.russian.emotion },
+                body: { available: false, url: null, coverImage: null },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/russian-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: true, url: CERTIFICATION_URL_DISCOVER_HEALING, partner: "Discover Healing" },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=russian"
+        },
+        {
+            id: "slovak", name: "Slovak", displayName: "Slovak", native: "Slovenčina",
+            flags: ["🇸🇰"], primaryFlag: "🇸🇰",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.slovak.emotion },
+                body: { available: false, url: null, coverImage: null },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: false, url: null },
+            certifications: {
+                emotion: { available: false, url: null, partner: null },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=slovak"
+        },
+        {
+            id: "spanish", name: "Spanish", displayName: "Spanish", native: "Español",
+            flags: ["🇪🇸", "🇲🇽", "🇦🇷"], primaryFlag: "🇪🇸",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.spanish.emotion },
+                body: { available: true, url: "#", coverImage: BOOK_COVERS.spanish.body },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/spanish-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: true, url: CERTIFICATION_URL_DISCOVER_HEALING, partner: "Discover Healing" },
+                body: { available: true, url: CERTIFICATION_URL_DISCOVER_HEALING, partner: "Discover Healing" },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=spanish"
+        },
+        {
+            id: "swedish", name: "Swedish", displayName: "Swedish", native: "Svenska",
+            flags: ["🇸🇪"], primaryFlag: "🇸🇪",
+            books: {
+                emotion: { available: false, url: null, coverImage: null },
+                body: { available: true, url: "#", coverImage: BOOK_COVERS.swedish.body },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: false, url: null },
+            certifications: {
+                emotion: { available: false, url: null, partner: null },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=swedish"
+        },
+        {
+            id: "turkish", name: "Turkish", displayName: "Turkish", native: "Türkçe",
+            flags: ["🇹🇷"], primaryFlag: "🇹🇷",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.turkish.emotion },
+                body: { available: true, url: "#", coverImage: BOOK_COVERS.turkish.body },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: false, url: null },
+            certifications: {
+                emotion: { available: false, url: null, partner: null },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=turkish"
+        },
+        {
+            id: "vietnamese", name: "Vietnamese", displayName: "Vietnamese", native: "Tiếng Việt",
+            flags: ["🇻🇳"], primaryFlag: "🇻🇳",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS.vietnamese.emotion },
+                body: { available: false, url: null, coverImage: null },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: false, url: null },
+            certifications: {
+                emotion: { available: false, url: null, partner: null },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=vietnamese"
+        },
+        {
+            id: "chinese-traditional", name: "Chinese (Traditional)", displayName: "Chinese <span class='subtitle'>(Traditional)</span>", native: "繁體中文",
+            flags: ["🇹🇼", "🇭🇰"], primaryFlag: "🇹🇼",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS['chinese-traditional'].emotion },
+                body: { available: false, url: null, coverImage: null },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/traditional-chinese-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: true, url: CERTIFICATION_URL_DISCOVER_HEALING, partner: "Discover Healing" },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=chinese"
+        },
+        {
+            id: "chinese-simplified", name: "Chinese (Simplified)", displayName: "Chinese <span class='subtitle'>(Simplified)</span>", native: "简体中文",
+            flags: ["🇨🇳"], primaryFlag: "🇨🇳",
+            books: {
+                emotion: { available: true, url: "#", coverImage: BOOK_COVERS['chinese-simplified'].emotion },
+                body: { available: true, url: "#", coverImage: BOOK_COVERS['chinese-simplified'].body },
+                heart: { available: false, url: null, coverImage: null }
+            },
+            emotionCodeChart: { available: true, url: "https://discoverhealing.com/simplified-chinese-emotion-code-chart/" },
+            certifications: {
+                emotion: { available: false, url: null, partner: null },
+                body: { available: false, url: null, partner: null },
+                belief: { available: false, url: null, partner: null }
+            },
+            practitionerUrl: "https://discoverhealing.com/practitioners?lang=chinese"
+        }
+    ];
+
+    languages.sort(function(a, b) {
+        return a.name.localeCompare(b.name);
+    });
+
+    var bookNames = {
+        emotion: "Emotion Code",
+        body: "Body Code",
+        heart: "Heart Code"
+    };
+
+    var certNames = {
+        emotion: "Emotion",
+        body: "Body",
+        belief: "Belief"
+    };
+
+    function renderSidebar() {
+        var list = document.getElementById('languageList');
+        if (!list) return;
+
+        var html = '';
+
+        for (var i = 0; i < languages.length; i++) {
+            var lang = languages[i];
+            html += '<li class="language-list-item">' +
+                '<a href="#' + lang.id + '" data-lang="' + lang.id + '">' +
+                '<span class="flag">' + lang.primaryFlag + '</span>' +
+                '<span>' + lang.name + '</span>' +
+                '</a></li>';
+        }
+
+        list.innerHTML = html;
+
+        var links = document.querySelectorAll('.language-list-item a');
+        for (var k = 0; k < links.length; k++) {
+            links[k].addEventListener('click', function(e) {
+                e.preventDefault();
+                var langId = this.getAttribute('data-lang');
+                var card = document.getElementById(langId);
+                if (!card) return;
+
+                var allLinks = document.querySelectorAll('.language-list-item a');
+                for (var j = 0; j < allLinks.length; j++) {
+                    allLinks[j].classList.remove('active');
+                }
+                this.classList.add('active');
+
+                var allCards = document.querySelectorAll('.language-card');
+                for (var m = 0; m < allCards.length; m++) {
+                    allCards[m].classList.remove('highlighted');
+                }
+                card.classList.add('highlighted');
+
+                try {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } catch (err) {
+                    card.scrollIntoView(true);
+                }
+
+                setTimeout(function() {
+                    card.classList.remove('highlighted');
+                }, 2000);
+            });
+        }
+    }
+
+    function renderBookCover(type, book) {
+        if (book.coverImage) {
+            return '<img src="' + book.coverImage + '" alt="' + bookNames[type] + '" class="book-cover-image" />';
+        } else {
+            return '<div class="book-placeholder">' +
+                '<div class="book-icon">📖</div>' +
+                '<div class="book-title">' + bookNames[type] + '</div>' +
+                '</div>';
+        }
+    }
+
+    function renderLanguageCard(lang) {
+        var anyCertsAvailable = false;
+        var isYounity = false;
+
+        var certKeys = Object.keys(lang.certifications);
+        for (var i = 0; i < certKeys.length; i++) {
+            var cert = lang.certifications[certKeys[i]];
+            if (cert.available) {
+                anyCertsAvailable = true;
+                if (cert.partner === "Younity") {
+                    isYounity = true;
+                }
+            }
+        }
+
+        var certUrl = isYounity ? CERTIFICATION_URL_YOUNITY : CERTIFICATION_URL_DISCOVER_HEALING;
+
+        var booksHtml = '';
+        var bookKeys = Object.keys(lang.books);
+        for (var b = 0; b < bookKeys.length; b++) {
+            var type = bookKeys[b];
+            var book = lang.books[type];
+            var unavailableClass = !book.available ? 'unavailable' : '';
+            var onclickAttr = book.available ? 'onclick="window.open(\'' + book.url + '\', \'_blank\')"' : '';
+            var badge = book.available ? '<div class="book-badge">Buy</div>' : '';
+
+            booksHtml += '<div class="book-item ' + type + ' ' + unavailableClass + '" ' + onclickAttr + '>' +
+                badge + renderBookCover(type, book) + '</div>';
+        }
+
+        var chartHtml = '';
+        if (lang.emotionCodeChart && lang.emotionCodeChart.available) {
+            chartHtml = '<div class="section"><div class="chart-section">' +
+                '<button class="chart-download-btn" onclick="window.open(\'' + lang.emotionCodeChart.url + '\', \'_blank\')">' +
+                '<img src="' + CHART_ICON_URL + '" alt="Emotion Code Chart" class="chart-icon" />' +
+                '<div class="chart-text">' +
+                '<div class="chart-title">The Emotion Code Chart</div>' +
+                '<div class="chart-subtitle">Download or view online</div>' +
+                '</div></button></div></div>';
+        }
+
+        var certBadgesHtml = '';
+        var certKeys2 = Object.keys(lang.certifications);
+        for (var c = 0; c < certKeys2.length; c++) {
+            var ctype = certKeys2[c];
+            var cert2 = lang.certifications[ctype];
+            var unavailableClass2 = !cert2.available ? 'unavailable' : '';
+            var onclickAttr2 = cert2.available ? 'onclick="window.open(\'' + cert2.url + '\', \'_blank\')"' : '';
+            var title = cert2.available ? certNames[ctype] + ' Code - ' + cert2.partner : 'Not yet available';
+            var younityBadge = (cert2.available && cert2.partner === 'Younity') ?
+                '<div class="younity-badge"><img src="' + YOUNITY_LOGO_URL + '" alt="Younity" /></div>' : '';
+
+            certBadgesHtml += '<div class="cert-badge ' + ctype + ' ' + unavailableClass2 + '" ' +
+                onclickAttr2 + ' title="' + title + '">' + younityBadge +
+                '<div class="cert-icon">✓</div><div>' + certNames[ctype] + '</div></div>';
+        }
+
+        var certBtnClass = !anyCertsAvailable ? 'disabled' : '';
+        if (isYounity) certBtnClass += ' younity';
+        var certBtnDisabled = !anyCertsAvailable ? 'disabled' : '';
+        var certBtnOnclick = anyCertsAvailable ? 'onclick="window.open(\'' + certUrl + '\', \'_blank\')"' : '';
+        var certBtnText = anyCertsAvailable ?
+            '🎓 Get Certified ' + (isYounity ? 'via Younity' : '') :
+            'Certifications Coming Soon';
+
+        return '<div class="language-card" id="' + lang.id + '">' +
+            '<div class="language-header">' +
+            '<div class="language-info">' +
+            '<div class="language-name">' + lang.displayName + '</div>' +
+            '<div class="language-native">' + lang.native + '</div>' +
+            '</div>' +
+            '<div class="flag-group">' + lang.flags.join(' ') + '</div>' +
+            '</div>' +
+            '<div class="section">' +
+            '<div class="section-title">📚 Available Books</div>' +
+            '<div class="books-grid">' + booksHtml + '</div>' +
+            '</div>' +
+            chartHtml +
+            '<div class="section">' +
+            '<div class="section-title">🎓 Available Certifications</div>' +
+            '<div class="certifications-section">' +
+            '<div class="cert-badges">' + certBadgesHtml + '</div>' +
+            '<button class="cert-purchase-btn ' + certBtnClass + '" ' + certBtnDisabled + ' ' + certBtnOnclick + '>' +
+            certBtnText + '</button></div></div>' +
+            '<a href="' + lang.practitionerUrl + '" class="practitioner-link">🔍 Find Practitioners</a>' +
+            '</div>';
+    }
+
+    function renderCards(filteredLanguages) {
+        var grid = document.getElementById('languageGrid');
+        var emptyState = document.getElementById('emptyState');
+        if (!grid || !emptyState) return;
+
+        if (filteredLanguages.length === 0) {
+            grid.style.display = 'none';
+            emptyState.style.display = 'block';
+            return;
+        }
+
+        grid.style.display = 'grid';
+        emptyState.style.display = 'none';
+
+        var html = '';
+        for (var i = 0; i < filteredLanguages.length; i++) {
+            html += renderLanguageCard(filteredLanguages[i]);
+        }
+        grid.innerHTML = html;
+    }
+
+    function bindSearch() {
+        var searchInput = document.getElementById('searchInput');
+        if (!searchInput) return;
+
+        searchInput.addEventListener('input', function(e) {
+            var search = (e.target && e.target.value ? e.target.value : '').toLowerCase();
+            var filtered = [];
+
+            for (var i = 0; i < languages.length; i++) {
+                var lang = languages[i];
+                if (lang.name.toLowerCase().indexOf(search) !== -1 ||
+                    lang.native.toLowerCase().indexOf(search) !== -1) {
+                    filtered.push(lang);
+                }
+            }
+
+            renderCards(filtered);
+        });
+    }
+
+    function init() {
+        renderSidebar();
+        renderCards(languages);
+        bindSearch();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
