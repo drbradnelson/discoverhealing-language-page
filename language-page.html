@@ -1,4 +1,17 @@
 <meta charset="UTF-8">
+
+<!--
+  Image hosting:
+
+  All images live in the /images folder of this repo and are served via the
+  jsDelivr CDN (see the IMAGE_BASE constant in the script below). To add or
+  replace an image: drop the file into /images, commit, and push. The CDN
+  picks up changes automatically within a minute or so.
+
+  Country flags are not images — they are Unicode emoji rendered by the
+  browser font.
+-->
+
 <style>
     /* Reset Avada styles that might interfere */
     .language-page-wrapper * {
@@ -613,92 +626,97 @@
     // CONFIGURATION
     var CERTIFICATION_URL_DISCOVER_HEALING = 'https://discoverhealing.com/certification/';
     var CERTIFICATION_URL_YOUNITY = 'https://younity.com';
-    var YOUNITY_LOGO_URL = 'https://discoverhealing.com/wp-content/uploads/2026/02/Younity-Logo-png-b83.png';
-    var CHART_ICON_URL = 'https://discoverhealing.com/wp-content/uploads/2026/02/Screenshot-2026-02-12-at-23.48.41-png-b83.png';
+    var IMAGE_BASE = 'https://cdn.jsdelivr.net/gh/drbradnelson/discoverhealing-language-page@main/images/';
+    var YOUNITY_LOGO_URL = IMAGE_BASE + 'Younity-Logo.png';
+    var CHART_ICON_URL = IMAGE_BASE + 'Emotion-Code-Chart-Icon.png';
 
-    // Book cover configuration
+    // Book cover configuration. Filenames are relative to IMAGE_BASE.
     var BOOK_COVERS = {
-        english: { emotion: null, body: null, heart: null },
+        english: {
+            emotion: IMAGE_BASE + 'English-Emotion-Code.png',
+            body: IMAGE_BASE + 'English-Body-Code.png',
+            heart: IMAGE_BASE + 'English-Heart-Code.png'
+        },
         arabic: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Arabic-Emotion-Code-Glory-png-f93-scaled.jpg',
-            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Arabic-Body-Code-Glory-png-f93-scaled.jpg',
+            emotion: IMAGE_BASE + 'Arabic-Emotion-Code.jpg',
+            body: IMAGE_BASE + 'Arabic-Body-Code.jpg',
             heart: null
         },
         croatian: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Croatian-Emotion-Code-Glory-png-f93-scaled.jpg',
+            emotion: IMAGE_BASE + 'Croatian-Emotion-Code.jpg',
             body: null,
             heart: null
         },
         czech: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Czech-Emotion-Code-Glory-png-f93-scaled.jpg',
+            emotion: IMAGE_BASE + 'Czech-Emotion-Code.jpg',
             body: null,
             heart: null
         },
         dutch: { emotion: null, body: null, heart: null },
         french: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/French-Emotion-Code-Glory-png-f93-scaled.jpg',
+            emotion: IMAGE_BASE + 'French-Emotion-Code.jpg',
             body: null,
             heart: null
         },
         german: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/German-Emotion-Code-Glory-png-f93-scaled.jpg',
-            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/German-Body-Code-Glory-png-f93-scaled.jpg',
-            heart: 'https://s3.discoverhealing.com/wp-content/uploads/2025/11/German-Language-Belief-Code-png-f93-1024x731.jpg'
+            emotion: IMAGE_BASE + 'German-Emotion-Code.jpg',
+            body: IMAGE_BASE + 'German-Body-Code.jpg',
+            heart: IMAGE_BASE + 'German-Heart-Code.jpg'
         },
         hungarian: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Hungarian-Emotion-Code-Glory-png-f93-scaled.jpg',
-            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Hungarian-Body-Code-Glory-png-f93-scaled.jpg',
+            emotion: IMAGE_BASE + 'Hungarian-Emotion-Code.jpg',
+            body: IMAGE_BASE + 'Hungarian-Body-Code.jpg',
             heart: null
         },
         italian: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Italian-Emotion-Code-Glory-png-f93-scaled.jpg',
-            body: null,
+            emotion: IMAGE_BASE + 'Italian-Emotion-Code.jpg',
+            body: IMAGE_BASE + 'Italian-Body-Code.png',
             heart: null
         },
         japanese: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Japanese-Emotion-Code-Glory-png-f93-scaled.jpg',
+            emotion: IMAGE_BASE + 'Japanese-Emotion-Code.jpg',
             body: null,
             heart: null
         },
         korean: { emotion: null, body: null, heart: null },
         polish: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Polish-Emotion-Code-Glory-png-f93-scaled.jpg',
-            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Polish-Body-Code-Glory-png-f93-scaled.jpg',
+            emotion: IMAGE_BASE + 'Polish-Emotion-Code.jpg',
+            body: IMAGE_BASE + 'Polish-Body-Code.jpg',
             heart: null
         },
         portuguese: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Portuguese-Emotion-Code-Glory-png-f93-scaled.jpg',
-            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Portuguese-Body-Code-Glory-png-f93-scaled.jpg',
+            emotion: IMAGE_BASE + 'Portuguese-Emotion-Code.jpg',
+            body: IMAGE_BASE + 'Portuguese-Body-Code.jpg',
             heart: null
         },
         romanian: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Romanian-Emotion-Code-Glory-png-f93-scaled.jpg',
-            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Romanian-Body-Code-Glory-png-f93-scaled.jpg',
+            emotion: IMAGE_BASE + 'Romanian-Emotion-Code.jpg',
+            body: IMAGE_BASE + 'Romanian-Body-Code.jpg',
             heart: null
         },
         russian: { emotion: null, body: null, heart: null },
         slovak: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Slovak-Emotion-Code-Glory-png-f93-scaled.jpg',
+            emotion: IMAGE_BASE + 'Slovak-Emotion-Code.jpg',
             body: null,
             heart: null
         },
         spanish: {
             emotion: null,
-            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Spanish-Body-Code-Glory-png-f93-scaled.jpg',
+            body: IMAGE_BASE + 'Spanish-Body-Code.jpg',
             heart: null
         },
         swedish: {
             emotion: null,
-            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Swedish-Body-Code-Glory-png-f93-scaled.jpg',
+            body: IMAGE_BASE + 'Swedish-Body-Code.jpg',
             heart: null
         },
         turkish: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Turkish-Emotion-Code-Glory-png-f93-scaled.jpg',
-            body: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Turkish-body-Code-Glory-png-f93-scaled.jpg',
+            emotion: IMAGE_BASE + 'Turkish-Emotion-Code.jpg',
+            body: IMAGE_BASE + 'Turkish-Body-Code.jpg',
             heart: null
         },
         vietnamese: {
-            emotion: 'https://s3.discoverhealing.com/wp-content/uploads/2025/03/Vietnamese-Emotion-Code-Glory-png-f93-scaled.jpg',
+            emotion: IMAGE_BASE + 'Vietnamese-Emotion-Code.jpg',
             body: null,
             heart: null
         },
@@ -840,7 +858,7 @@
             flags: ["🇮🇹"], primaryFlag: "🇮🇹",
             books: {
                 emotion: { available: true, url: "#", coverImage: BOOK_COVERS.italian.emotion },
-                body: { available: false, url: null, coverImage: null },
+                body: { available: true, url: "#", coverImage: BOOK_COVERS.italian.body },
                 heart: { available: false, url: null, coverImage: null }
             },
             emotionCodeChart: { available: true, url: "https://discoverhealing.com/italian-emotion-code-chart/" },
