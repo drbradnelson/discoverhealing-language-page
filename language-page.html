@@ -413,39 +413,35 @@
         position: relative;
         flex: 1;
         min-width: 90px;
-        padding: 10px;
-        border-radius: 8px;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 6px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: white;
-        transition: all 0.2s;
+        justify-content: center;
+        transition: transform 0.2s, filter 0.2s;
         cursor: pointer;
+    }
+
+    .language-page-wrapper .cert-badge-image {
+        width: 100%;
+        height: auto;
+        max-width: 90px;
+        display: block;
     }
 
     .language-page-wrapper .cert-badge:hover {
         transform: translateY(-3px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
     }
 
     .language-page-wrapper .cert-badge.unavailable {
-        background: #e0e0e0 !important;
-        color: #95a5a6;
         cursor: not-allowed;
         opacity: 0.5;
+        filter: grayscale(100%);
     }
 
     .language-page-wrapper .cert-badge.unavailable:hover {
         transform: none;
-        box-shadow: none;
+        filter: grayscale(100%);
     }
-
-    .language-page-wrapper .cert-badge.emotion { background: #3ba199; }
-    .language-page-wrapper .cert-badge.body { background: #6b5b95; }
-    .language-page-wrapper .cert-badge.belief { background: #e74c3c; }
 
     .language-page-wrapper .younity-badge {
         position: absolute;
@@ -629,6 +625,11 @@
     var IMAGE_BASE = 'https://cdn.jsdelivr.net/gh/drbradnelson/discoverhealing-language-page@main/images/';
     var YOUNITY_LOGO_URL = IMAGE_BASE + 'Younity-Logo.png';
     var CHART_ICON_URL = IMAGE_BASE + 'Emotion-Code-Chart-Icon.png';
+    var CERT_BADGES = {
+        emotion: IMAGE_BASE + 'Emotion-Code-Badge.png',
+        body: IMAGE_BASE + 'Body-Code-Badge.png',
+        belief: IMAGE_BASE + 'Belief-Code-Badge.png'
+    };
 
     // Book cover configuration. Filenames are relative to IMAGE_BASE.
     var BOOK_COVERS = {
@@ -1211,7 +1212,8 @@
 
             certBadgesHtml += '<div class="cert-badge ' + ctype + ' ' + unavailableClass2 + '" ' +
                 onclickAttr2 + ' title="' + title + '">' + younityBadge +
-                '<div class="cert-icon">✓</div><div>' + certNames[ctype] + '</div></div>';
+                '<img src="' + CERT_BADGES[ctype] + '" alt="' + certNames[ctype] + ' Code Badge" class="cert-badge-image" />' +
+                '</div>';
         }
 
         var certBtnClass = !anyCertsAvailable ? 'disabled' : '';
